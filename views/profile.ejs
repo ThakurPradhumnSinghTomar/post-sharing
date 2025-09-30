@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Account</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <div class="main min-h-screen bg-gradient-to-r from-[#2d193c] via-[#3c2f58] to-[#4c3f6d] pt-5">
+    <div class="flex justify-end">
+      <a class="bg-red-700 px-4 rounded-md p-1 inline-block mx-10" href="/logout">Log-out</a>
+    </div>
+    <div class="flex px-10 item-start gap-2">
+    <div class="w-10 h-10  rounded-lg">
+      <a href="/profile/upload">
+      <img class="w-full h-full object-cover" src="/image/upload/<%=user.profilepic%>">
+      </a>
+    </div>
+    <h2 class="text-2xl font-bold pb-3 text-white"><span class="font-light">Hello, </span>
+      <%=user.name%>👋
+    </h2>
+    </div>
+    <h3 class="px-10 mb-5 text-white">You can Create a new post</h3>
+    <div class="px-10 pt-5">
+      <form action="/post" method="post">
+        <textarea class=" block w-1/2 bg-[#5a4b75] rounded-lg border-2 border-[#6a5e84] p-2 outline-none transition"
+          placeholder="What's on your mind ?" name="content"></textarea>
+        <input type="submit" value="Create new post" class="bg-purple-700 block w-40 mt-3 p-2 rounded-md text-white">
+      </form>
+    </div>
+    <div class="posts p-10 mt-5">
+      <h3 class="text-white">YOUR POSTS 💬</h3>
+      <div class="postcontainer mt-4">
+        <%user.posts.forEach(function(post){%>
+          <div class="post bg-[#a892d8] w-1/2 rounded-md p-4 border-2 border-purple-300 mb-3">
+          <h5 class="text-blue-800 mb-1">@<%=user.username%></h5>
+          <p class="text-sm "><%= post.content %></p>
+          <div class="btns mt-5 flex justify-between">
+          <a class="text-purple-900 pointer" href="/like/<%=post._id%>">Like❤️<%= post.likes.length%></a>
+          <a class="text-purple-800 pointer" href="">edit</a>
+        </div>
+        </div>
+        <%})%>
+        
+        
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>
