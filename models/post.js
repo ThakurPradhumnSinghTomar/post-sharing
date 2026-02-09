@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 
+//rahul bhosdu h bhut bada vala
 
 const postSchema = mongoose.Schema({
     user:{
